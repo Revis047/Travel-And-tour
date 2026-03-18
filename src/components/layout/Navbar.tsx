@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../../assets/logo.png"
 import {
   Heart,
   ShoppingBag,
@@ -65,15 +66,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* LOGO FIX */}
-        <div className="flex items-center gap-2 cursor-pointer">
+        <div className=" items-center gap-2 cursor-pointer">
           <img
-            src="https://moliva.themenix.com/assets/img/logos/footer-logo.png"
+            src={logo}
             alt="Moliva"
-            className="h-9 w-auto"
+            className="h-10 w-auto"
           />
-          <span className="text-2xl font-semibold tracking-tight">
-            Moliva
-          </span>
+         
         </div>
 
         {/* DESKTOP NAV */}

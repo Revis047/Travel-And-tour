@@ -88,7 +88,7 @@ const DestCard = ({ name, tours, image, href }: {
   </a>
 );
 
-// ─── Main Component ───────────────────────────────────────────────────────────
+// ─── Main Component ─────────────────────────────────────────────
 
 export default function DestinationSection() {
   const trackRef             = useRef<HTMLDivElement>(null);

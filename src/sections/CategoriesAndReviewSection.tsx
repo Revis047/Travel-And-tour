@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback, type JSX } from "react";
-import demoImage from "../assets/demo.png";
+import profile1 from "../assets/prf1.jpg"
+
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
@@ -329,7 +330,7 @@ export default function CategoriesAndReviewSection() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <img
-                      src={demoImage}
+                      src={profile1}
                       alt={r.name}
                       className="w-[52px] h-[52px] rounded-full object-cover shrink-0"
                     />

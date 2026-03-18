@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 // ─── Social Icons ─────────────────────────────────────────────────────────────
 
 const IcoFacebook = () => (
@@ -37,21 +38,12 @@ const IcoChevDown = () => (
 
 const MolivaLogo = () => (
   <div className="flex items-center gap-2.5 mb-5">
-    <svg viewBox="0 0 384 512" width="34" height="44">
-      <defs>
-        <linearGradient id="pinGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#6ed36e" />
-          <stop offset="100%" stopColor="#3a9e3a" />
-        </linearGradient>
-      </defs>
-      <path fill="url(#pinGrad)" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0z" />
-      <circle cx="192" cy="192" r="76" fill="white" />
-      <circle cx="192" cy="192" r="48" fill="url(#pinGrad)" />
-      <circle cx="170" cy="172" r="14" fill="white" opacity="0.65" />
-    </svg>
-    <span className="text-white font-bold text-[28px] tracking-wide leading-none">
-      Moliva
-    </span>
+       <img
+            src="https://moliva.themenix.com/assets/img/logos/footer-logo.png"
+            alt="Moliva"
+            className="h-9 w-auto text-red-500"
+          /> 
+    
   </div>
 );
 
@@ -94,10 +86,10 @@ const LangDropdown = () => {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 border border-[#2a3d52] rounded-lg px-3 py-2 text-white/75 text-[13px] hover:border-[#5cb85c] transition-colors bg-transparent w-full"
+        className="flex items-center gap-2   px-3 py-2 text-white/75 text-[13px] hover:border-[#5cb85c] transition-colors bg-transparent w-full"
       >
-        <img src="https://moliva.themenix.com/assets/img/flags/en.svg" alt="EN" className="w-5 h-3.5 rounded-sm object-cover shrink-0" />
-        <span className="flex-1 text-left">{sel}</span>
+        <img src="https://moliva.themenix.com/assets/img/flags/en.svg" alt="EN" className="w-5 h-3.5  object-cover shrink-0" />
+        <span className="flex text-left">{sel}</span>
         <IcoChevDown />
       </button>
       {open && (
@@ -122,9 +114,9 @@ const CurrencyDropdown = () => {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 border border-[#2a3d52] rounded-lg px-3 py-2 text-white/75 text-[13px] hover:border-[#5cb85c] transition-colors bg-transparent w-full"
+        className="flex items-center gap-2  rounded-lg px-3 py-2 text-white/75 text-[13px] hover:border-[#5cb85c] transition-colors bg-transparent w-full"
       >
-        <span className="flex-1 text-left">{sel}</span>
+        <span className=" text-left">{sel}</span>
         <IcoChevDown />
       </button>
       {open && (
@@ -210,7 +202,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Col 3: Moliva Travel nav ── */}
+          
           <div>
             <h4 className="text-white font-semibold text-[16px] mb-6">Moliva Travel</h4>
             <ul className="space-y-3.5">
@@ -225,23 +217,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Col 4: Get the app + dropdowns ── */}
+         
           <div>
-            <h4 className="text-white font-semibold text-[16px] mb-6">Get the app</h4>
-            <div className="flex flex-col gap-3 mb-7">
+            <h4 className="text-white font-semibold  text-[16px] mb-6">Get the app</h4>
+            <div className="flex w-75  gap-3 mb-7">
               <GooglePlayBadge />
               <AppStoreBadge />
             </div>
-            <div className="flex flex-col gap-2.5">
-              <LangDropdown />
-              <CurrencyDropdown />
-            </div>
+           <div className="bg-[#0d1e2e] p-4 w-75 rounded-xl">
+  <div className="flex  gap-3 ">
+    <LangDropdown />
+    <CurrencyDropdown />
+  </div>
+</div>
           </div>
 
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
+      
       <div className="border-t border-[#19304a]">
         <div className="max-w-[1200px] mx-auto px-8 py-5 flex items-center justify-between">
           <p className="text-white/45 text-[13px]">
