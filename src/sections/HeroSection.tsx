@@ -74,25 +74,12 @@ const DropItem = ({ label, active, onClick }: { label: string; active: boolean; 
 
 // DropMenu renders into a portal-like fixed position so it NEVER gets clipped
 // by any parent overflow-hidden. Uses fixed positioning anchored by JS rect.
-const DropMenu = ({ anchorRef, open, children }: {
+const DropMenu = ({ children }: {
   anchorRef: React.RefObject<HTMLDivElement | null>;
   open: boolean;
   children: React.ReactNode;
 }) => {
-  const [pos, setPos] = useState({ top: 0, left: 0, width: 0 });
 
-  useEffect(() => {
-    if (open && anchorRef.current) {
-      const r = anchorRef.current.getBoundingClientRect();
-      setPos({
-        top: r.bottom + window.scrollY + 6,
-        left: r.left + window.scrollX,
-        width: r.width,
-      });
-    }
-  }, [open, anchorRef]);
-
-  if (!open) return null;
 
   return (
     <div
