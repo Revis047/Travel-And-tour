@@ -140,7 +140,7 @@ export default function Navbar() {
               }`}
             >
               {pagesMegaMenu.map((section, i) => (
-                <div key={i} className="min-w-[200px]">
+                <div key={i} className="min-w-50">
                   <h2 className="font-semibold mb-4 text-lg">
                     {section.title}
                   </h2>

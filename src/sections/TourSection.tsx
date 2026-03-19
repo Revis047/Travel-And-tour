@@ -70,9 +70,9 @@ const TourCard = ({ tour }: { tour: typeof tours[0] }) => {
   const [wished, setWished] = useState(false);
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden shrink-0 w-[290px] shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
+    <div className="bg-white rounded-2xl overflow-hidden shrink-0 w-72.5 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col">
       {/* Image */}
-      <div className="relative w-full h-[185px] overflow-hidden">
+      <div className="relative w-full h-46.25 overflow-hidden">
         <img
           src={demoImage}
           alt={tour.title}
@@ -179,12 +179,12 @@ export default function TourSection() {
           WHY CHOOSE US  ·  bg-[#f0f2f0] grey
       ══════════════════════════════════════════════ */}
       <div className="bg-[#f0f2f0]">
-        <div className="max-w-[1200px] mx-auto px-8 py-20 flex items-center gap-16">
+        <div className="max-w-300 mx-auto px-8 py-20 flex items-center gap-16">
 
           {/* ── LEFT: image block ── */}
-          <div className="relative shrink-0 w-[400px]">
+          <div className="relative shrink-0 w-100">
             {/* Main image */}
-            <div className="w-full h-[480px] rounded-2xl overflow-hidden shadow-lg">
+            <div className="w-full h-120 rounded-2xl overflow-hidden shadow-lg">
               <img
                 src={demoImage}
                 alt="Why choose us"
@@ -231,7 +231,7 @@ export default function TourSection() {
             </h2>
 
             {/* Sub text */}
-            <p className="text-gray-500 text-[14px] leading-[1.7] mb-8 max-w-[500px]">
+            <p className="text-gray-500 text-[14px] leading-[1.7] mb-8 max-w-125">
               We are a leading travel agency in Moliva with many years of experience, highly rated
               and appreciated by tourists.
             </p>
@@ -258,7 +258,7 @@ export default function TourSection() {
 
                   {/* Expanded content */}
                   {openIndex === i && (
-                    <p className="text-gray-500 text-[13.5px] leading-[1.7] pb-4 pl-[26px]">
+                    <p className="text-gray-500 text-[13.5px] leading-[1.7] pb-4 pl-6.5">
                       {item.description}
                     </p>
                   )}
@@ -282,7 +282,7 @@ export default function TourSection() {
           TOP TOURS SLIDER  ·  bg-[#f0f2f0] grey
       ══════════════════════════════════════════════ */}
       <div className="bg-[#f0f2f0]">
-        <div className="max-w-[1200px] mx-auto px-8 pt-4 pb-20">
+        <div className="max-w-300 mx-auto px-8 pt-4 pb-20">
 
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
@@ -380,7 +380,7 @@ function VideoSection() {
   return (
     <>
       {/* ── Banner ── */}
-      <div className="relative w-full h-[420px] flex flex-col items-center justify-center text-center overflow-hidden">
+      <div className="relative w-full h-105 flex flex-col items-center justify-center text-center overflow-hidden">
         {/* Background image */}
         <img
           src={demoImage}
@@ -403,7 +403,7 @@ function VideoSection() {
           {/* Play button — opens modal */}
           <button
             onClick={() => setModalOpen(true)}
-            className="group relative w-[72px] h-[72px] rounded-full bg-[#5cb85c] hover:bg-[#4cae4c] flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 mt-2"
+            className="group relative w-18 h-[72px] rounded-full bg-[#5cb85c] hover:bg-[#4cae4c] flex items-center justify-center transition-all duration-300 shadow-lg hover:scale-110 mt-2"
             aria-label="Play video"
           >
             <span className="absolute inset-0 rounded-full bg-[#5cb85c]/40 animate-ping" />
@@ -421,7 +421,7 @@ function VideoSection() {
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="relative w-full max-w-[900px] mx-4 rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-225 mx-4 rounded-2xl overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}

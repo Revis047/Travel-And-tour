@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { slides, stats, categories, tourDates } from "../Data/heroData";
 
-// ─── Icons ────────────────────────────────────────────────────────────────────
-
 const IcoArrowLeft = () => (
   <svg viewBox="0 0 448 512" fill="currentColor" width="18" height="18">
     <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0 105.4-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
@@ -24,22 +22,22 @@ const IcoBtnArrow = () => (
   </svg>
 );
 const IcoMapPin = () => (
-  <svg viewBox="0 0 384 512" fill="currentColor" width="16" height="16" className="text-gray-400 shrink-0">
+  <svg viewBox="0 0 384 512" fill="currentColor" width="15" height="15" className="text-gray-400 shrink-0">
     <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
   </svg>
 );
 const IcoCalendar = () => (
-  <svg viewBox="0 0 448 512" fill="currentColor" width="16" height="16" className="text-gray-400 shrink-0">
+  <svg viewBox="0 0 448 512" fill="currentColor" width="15" height="15" className="text-gray-400 shrink-0">
     <path d="M128 0c17.7 0 32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 48 0c26.5 0 48 21.5 48 48l0 48L0 160l0-48C0 85.5 21.5 64 48 64l48 0 0-32c0-17.7 14.3-32 32-32zM0 192l448 0 0 272c0 26.5-21.5 48-48 48L48 512c-26.5 0-48-21.5-48-48L0 192zm64 80l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm128 0l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-32 0z" />
   </svg>
 );
 const IcoGrid = () => (
-  <svg viewBox="0 0 512 512" fill="currentColor" width="16" height="16" className="text-gray-400 shrink-0">
+  <svg viewBox="0 0 512 512" fill="currentColor" width="15" height="15" className="text-gray-400 shrink-0">
     <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z" />
   </svg>
 );
 const IcoChevDown = () => (
-  <svg viewBox="0 0 512 512" fill="currentColor" width="13" height="13" className="text-gray-400 shrink-0">
+  <svg viewBox="0 0 512 512" fill="currentColor" width="12" height="12" className="text-gray-400 shrink-0">
     <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
   </svg>
 );
@@ -54,13 +52,20 @@ const IcoStar = () => (
   </svg>
 );
 
-// ─── Reusable sub-components ──────────────────────────────────────────────────
-
 const InputBox = ({ children }: { children: React.ReactNode }) => (
   <div className="flex items-center gap-2.5 border border-gray-200 rounded-lg px-3.5 py-[11px] bg-white flex-1">
     {children}
   </div>
 );
+
+const DropMenu = ({ open, children }: { open: boolean; children: React.ReactNode }) => {
+  if (!open) return null;
+  return (
+    <div className="absolute top-[calc(100%+6px)] left-0 w-full z-[99999] bg-white rounded-xl shadow-[0_8px_32px_rgba(0,0,0,.15)] border border-gray-100 max-h-60 overflow-y-auto">
+      {children}
+    </div>
+  );
+};
 
 const DropItem = ({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) => (
   <button
@@ -72,33 +77,6 @@ const DropItem = ({ label, active, onClick }: { label: string; active: boolean; 
   </button>
 );
 
-// DropMenu renders into a portal-like fixed position so it NEVER gets clipped
-// by any parent overflow-hidden. Uses fixed positioning anchored by JS rect.
-const DropMenu = ({ children }: {
-  anchorRef: React.RefObject<HTMLDivElement | null>;
-  open: boolean;
-  children: React.ReactNode;
-}) => {
-
-
-  return (
-    <div
-      className="bg-white rounded-xl shadow-[0_8px_32px_rgba(0,0,0,.15)] border border-gray-100 max-h-60 overflow-y-auto"
-      style={{
-        position: "absolute",
-        top: `calc(100% + 6px)`,
-        left: 0,
-        width: "100%",
-        zIndex: 99999,
-      }}
-    >
-      {children}
-    </div>
-  );
-};
-
-// ─── Main Component ───────────────────────────────────────────────────────────
-
 export default function HeroSection() {
   const [cur, setCur]           = useState<number>(0);
   const [cat, setCat]           = useState<string>("All categories");
@@ -109,9 +87,6 @@ export default function HeroSection() {
 
   const catRef  = useRef<HTMLDivElement>(null);
   const dateRef = useRef<HTMLDivElement>(null);
-
-  // ── Search card ref — positioned outside overflow-hidden ──
-  const searchCardRef = useRef<HTMLDivElement>(null);
 
   const go = useCallback(
     (n: number) => setCur((n + slides.length) % slides.length),
@@ -133,26 +108,21 @@ export default function HeroSection() {
   }, []);
 
   return (
-    // KEY FIX: outer wrapper is `relative` but NOT overflow-hidden
-    // so the search card and its dropdowns can bleed freely
     <section className="w-full font-['Outfit',sans-serif] relative">
 
-      {/* ══════════════ CAROUSEL — overflow-hidden only on the image area ══════════════ */}
       <div className="relative w-full h-[580px] overflow-hidden">
 
-        {/* Slides */}
         {slides.map((s, i) => (
           <div
             key={i}
             className={`absolute inset-0 transition-opacity duration-700 ${i === cur ? "opacity-100 z-10" : "opacity-0 z-0"}`}
           >
             <img src={s.image} alt={s.heading} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/20 to-black/5" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/25 to-black/5" />
           </div>
         ))}
 
-        {/* ── Text — bottom left ── */}
-        <div className="absolute left-0 bottom-0 z-10 px-16 pb-24 max-w-[600px]">
+        <div className="absolute inset-y-0 left-0 z-10 px-16 flex flex-col justify-center max-w-[620px]">
           <p className="text-white/85 text-[11px] font-semibold tracking-[3.5px] uppercase mb-[18px]">
             {slides[cur].label}
           </p>
@@ -169,14 +139,16 @@ export default function HeroSection() {
             >
               EXPLORE <IcoBtnArrow />
             </a>
-            <button className="w-[50px] h-[50px] rounded-full bg-[#5cb85c] hover:bg-[#4cae4c] text-white flex items-center justify-center shrink-0 border-none cursor-pointer transition-colors">
+            <button className="w-[50px] h-[50px] rounded-full bg-[#5cb85c] hover:bg-[#4cae4c] text-white flex items-center justify-center shrink-0 border-none cursor-pointer transition-colors pl-[3px]">
               <IcoPlay />
             </button>
           </div>
 
-          {/* ← • • → */}
           <div className="flex items-center gap-2.5">
-            <button onClick={() => go(cur - 1)} className="bg-transparent border-none text-white/60 hover:text-white cursor-pointer p-0 flex items-center transition-colors">
+            <button
+              onClick={() => go(cur - 1)}
+              className="bg-transparent border-none text-white/60 hover:text-white cursor-pointer p-0 flex items-center transition-colors"
+            >
               <IcoArrowLeft />
             </button>
             {slides.map((_, i) => (
@@ -187,38 +159,34 @@ export default function HeroSection() {
                   ${i === cur ? "w-[30px] bg-[#5cb85c]" : "w-[9px] bg-white/45 hover:bg-white/70"}`}
               />
             ))}
-            <button onClick={() => go(cur + 1)} className="bg-transparent border-none text-white/60 hover:text-white cursor-pointer p-0 flex items-center transition-colors">
+            <button
+              onClick={() => go(cur + 1)}
+              className="bg-transparent border-none text-white/60 hover:text-white cursor-pointer p-0 flex items-center transition-colors"
+            >
               <IcoArrowRight />
             </button>
           </div>
         </div>
 
-        {/* ── Vertical pill dots — right edge ── */}
         <div className="absolute right-5 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => go(i)}
-              className={`w-2 rounded-[4px] border-none cursor-pointer p-0 transition-all duration-300
-                ${i === cur ? "h-[22px] bg-[#5cb85c]" : "h-2 bg-white/40 hover:bg-white/70"}`}
+              className={`w-2 cursor-pointer p-0 border-none transition-all duration-300
+                ${i === cur
+                  ? "h-[22px] bg-transparent outline outline-2 outline-[#5cb85c] rounded-full"
+                  : "h-2 bg-white/40 hover:bg-white/70 rounded-full"}`}
             />
           ))}
         </div>
+
       </div>
-      {/* ↑ overflow-hidden ends here — search card is OUTSIDE this div ↑ */}
 
-      {/* ══ SEARCH CARD — sits on the section (not inside overflow-hidden carousel)
-           Pulled up with negative margin-top to visually overlap the carousel bottom ══ */}
-      <div
-        ref={searchCardRef}
-        className="absolute right-[60px] z-50"
-        style={{ top: "580px", transform: "translateY(-50%)" }}
-      >
-        <div className="w-[560px] bg-white rounded-xl shadow-[0_8px_48px_rgba(0,0,0,.18)] p-4">
+      <div className="absolute right-[60px] z-999  w-[560px]" style={{ top: 450 + "px" }}>
+        <div className="bg-white rounded-xl  p-4">
 
-          {/* Row 1 */}
           <div className="flex gap-3 mb-3">
-
             <InputBox>
               <IcoMapPin />
               <input
@@ -230,7 +198,6 @@ export default function HeroSection() {
               />
             </InputBox>
 
-            {/* Tour date */}
             <div ref={dateRef} className="relative flex-1">
               <button
                 onClick={() => { setDateOpen(!dateOpen); setCatOpen(false); }}
@@ -242,7 +209,7 @@ export default function HeroSection() {
                 </span>
                 <IcoChevDown />
               </button>
-              <DropMenu anchorRef={dateRef} open={dateOpen}>
+              <DropMenu open={dateOpen}>
                 {tourDates.map((d) => (
                   <DropItem key={d} label={d} active={date === d} onClick={() => { setDate(d); setDateOpen(false); }} />
                 ))}
@@ -250,10 +217,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Row 2 */}
           <div className="flex gap-3">
-
-            {/* Categories */}
             <div ref={catRef} className="relative flex-1">
               <button
                 onClick={() => { setCatOpen(!catOpen); setDateOpen(false); }}
@@ -263,14 +227,13 @@ export default function HeroSection() {
                 <span className="flex-1 text-[13.5px] text-gray-700 text-left">{cat}</span>
                 <IcoChevDown />
               </button>
-              <DropMenu anchorRef={catRef} open={catOpen}>
+              <DropMenu open={catOpen}>
                 {categories.map((c) => (
                   <DropItem key={c} label={c} active={cat === c} onClick={() => { setCat(c); setCatOpen(false); }} />
                 ))}
               </DropMenu>
             </div>
 
-            {/* SEARCH */}
             <button className="shrink-0 flex items-center gap-2 bg-[#5cb85c] hover:bg-[#4cae4c] text-white text-[13px] font-bold tracking-[1.5px] uppercase px-8 py-[11px] rounded-lg border-none cursor-pointer transition-colors font-['Outfit',sans-serif]">
               <IcoSearch />
               SEARCH
@@ -280,8 +243,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ══════════════ STATS BAR — WHITE ══════════════
-           paddingTop pushes content below the half-overlapping search card ══ */}
       <div className="bg-white pt-[104px] pb-12 border-b border-gray-100 relative z-10">
         <div className="max-w-[1200px] mx-auto px-16 grid grid-cols-2 md:grid-cols-4">
           {stats.map((s, i) => (
