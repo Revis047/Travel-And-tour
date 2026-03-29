@@ -62,7 +62,7 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Travel-And-tour.git
+git clone https://github.com/Revis047/Travel-And-tour.git
 cd Travel-And-tour
 ```
 
@@ -77,15 +77,6 @@ npm install
 ```bash
 npm run dev
 ```
-
----
-
-## 🖼️ Screenshots
-
-> Add screenshots here (Hero section, Navbar, Footer)
-
----
-
 ## 📦 Build
 
 ```bash
